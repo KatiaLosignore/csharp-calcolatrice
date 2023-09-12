@@ -51,14 +51,23 @@ namespace csharp_calcolatrice
 
         public static int AbsoluteNumber(int a)
         {
-            return (int)Math.Abs(a);
+            // return (int)Math.Abs(a);
+
+            if (a < 0)
+                return a + (a * -2);
+            return a;
+
         }
 
         // Valore assoluto di un numero double
 
         public static double AbsoluteNumber(double a)
         {
-            return (double)Math.Abs(a);
+            // return (double)Math.Abs(a);
+
+            if (a < 0)
+                return a + (a * -2);
+            return a;
         }
 
         // Minimo tra due numeri interi
@@ -88,5 +97,44 @@ namespace csharp_calcolatrice
             return Math.Max(a, b);
         }
 
+
+        /* BONUS
+        Aggiungete il metodo per l’elevamento a potenza che prende come parametri due numeri interi (base ed esponente) e ritorna la base elevata all’esponente.
+        Occhio che sia la base che l’esponente potrebbero essere uguali a zero oppure numeri negativi!
+        (caso esponente = 0 e base = 0 anche se in matematica sarebbe un numero indefinito usiamo l’approccio informatico che lo calcola come 1)
+        */
+
+        public static int PowerExpo(int baseValue, int exponent)
+        {
+            if (baseValue == 0 && exponent == 0)
+            {
+                // Se base ed esponente sono entrambi zero, restituisco 1
+                return 1;
+            }
+            else if (baseValue == 0)
+            {
+                // Se la base è zero, il risultato sarà sempre zero (tranne quando l'esponente è zero)
+                return 0;
+            }
+            else if (exponent == 0)
+            {
+                // Qualsiasi numero elevato a 0 è 1
+                return 1;
+            }
+            else if (exponent < 0)
+            {
+                // Se l'esponente è negativo, calcoliamo l'inverso della potenza positiva
+                return (int)(1 / Math.Pow(baseValue, -exponent));
+            }
+            else
+            {
+                // elevamento a potenza positiva
+                return (int)Math.Pow(baseValue, exponent);
+            }
+        }
+
+
     }
 }
+
+
